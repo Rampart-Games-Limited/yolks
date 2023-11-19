@@ -10,7 +10,7 @@ on:
       - steamcmd/**
 jobs:
   push:
-    name: "yolks:steamcmd:latest"
+    name: "yolks:steamcmd_alpine"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -32,4 +32,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/rampart-games-limited/yolks:steamcmd:latest
+            ghcr.io/rampart-games-limited/yolks:steamcmd_alpine
