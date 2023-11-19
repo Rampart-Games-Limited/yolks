@@ -53,7 +53,7 @@ LABEL       org.opencontainers.image.licenses=MIT
 
 # Install prerequisites
 RUN apk update \
- && apk add --no-cache gcompat bash libgcc\
+ && apk add --no-cache gcompat libstdc++\
  && rm -rf /var/cache/apk/* \
  && adduser -D -h /home/container container
 # Set environment variables
