@@ -51,19 +51,18 @@ LABEL       org.opencontainers.image.source="https://github.com/rampart-games-li
 LABEL       org.opencontainers.image.licenses=MIT
 
 
-# Set environment variables
-ENV USER root
-ENV HOME /home/container
-
-RUN mkdir -p $HOME
-# Set working directory
-WORKDIR $HOME
-
 # Install prerequisites
 RUN apk update \
  && apk add --no-cache bash \
  && rm -rf /var/cache/apk/* \
  && adduser -D -h /home/container container
+# Set environment variables
+ENV USER container
+ENV HOME /home/container
+USER container
+# Set working directory
+WORKDIR $HOME
+
 
 # Copy steamcmd files from builder
 COPY --from=builder /root/installer/steamcmd.sh /usr/lib/games/steam/
@@ -77,8 +76,7 @@ COPY --from=builder /root/installer/linux32/libstdc++.so.6 /lib/
 
 # Update SteamCMD and verify latest version
 RUN steamcmd +quit
-ENV         USER=container HOME=/home/container
-WORKDIR     /home/container
+
 # Fix missing directories and libraries
 RUN mkdir -p $HOME/.steam \
  && ln -s $HOME/.local/share/Steam/steamcmd/linux32 $HOME/.steam/sdk32 \
@@ -86,9 +84,6 @@ RUN mkdir -p $HOME/.steam \
  && ln -s $HOME/.steam/sdk32/steamclient.so $HOME/.steam/sdk32/steamservice.so \
  && ln -s $HOME/.steam/sdk64/steamclient.so $HOME/.steam/sdk64/steamservice.so
 
-RUN chown -r container:container $HOME
-
-USER        container
 
 
 COPY ./entrypoint.sh /entrypoint.sh
