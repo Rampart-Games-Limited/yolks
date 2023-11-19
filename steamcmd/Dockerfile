@@ -86,6 +86,6 @@ RUN mkdir -p $HOME/.steam \
  && ln -s $HOME/.steam/sdk64/steamclient.so $HOME/.steam/sdk64/steamservice.so
 
 COPY ./entrypoint.sh /entrypoint.sh
-USER contaienr
+USER container
 # Set default command
 ENTRYPOINT [ "/bin/ash", "/entrypoint.sh" ]
