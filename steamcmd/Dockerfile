@@ -69,12 +69,11 @@ COPY --from=builder /root/installer/linux32/libstdc++.so.6 /lib/
 
 RUN apk update \
 	&& adduser -D -h /home/container container
-USER container
-# Set environment variables
-ENV USER=container HOME=/home/container
 
-# Set working directory
-WORKDIR $HOME
+USER        container
+ENV         USER=container HOME=/home/container
+WORKDIR     /home/container
+
 # Update SteamCMD and verify latest version
 RUN steamcmd +quit
 
