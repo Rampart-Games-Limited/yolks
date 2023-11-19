@@ -77,7 +77,8 @@ COPY --from=builder /root/installer/linux32/libstdc++.so.6 /lib/
 
 # Update SteamCMD and verify latest version
 RUN steamcmd +quit
-
+ENV         USER=container HOME=/home/container
+WORKDIR     /home/container
 # Fix missing directories and libraries
 RUN mkdir -p $HOME/.steam \
  && ln -s $HOME/.local/share/Steam/steamcmd/linux32 $HOME/.steam/sdk32 \
@@ -88,8 +89,7 @@ RUN mkdir -p $HOME/.steam \
 RUN chown -r container:container $HOME
 
 USER        container
-ENV         USER=container HOME=/home/container
-WORKDIR     /home/container
+
 
 COPY ./entrypoint.sh /entrypoint.sh
 # Set default command
