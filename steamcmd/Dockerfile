@@ -57,9 +57,9 @@ RUN apk update \
  && rm -rf /var/cache/apk/* \
  && adduser -D -h /home/container container
 # Set environment variables
-ENV USER container
+#ENV USER container
 ENV HOME /home/container
-USER container
+#USER container
 # Set working directory
 WORKDIR $HOME
 
