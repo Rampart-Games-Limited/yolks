@@ -28,8 +28,8 @@ LABEL       org.opencontainers.image.source="https://github.com/rampart-games-li
 LABEL       org.opencontainers.image.licenses=MIT
 
 RUN 		apk update -y \
- 			&& apk install -y lsof curl ca-certificates openssl git tar sqlite fontconfig freetype-dev tzdata iproute2 libstdc++ \
- 			&& useradd -d /home/container -m container
+ 			&& apk install -y lsof curl ca-certificates openssl git tar sqlite fontconfig freetype-dev tzdata iproute2 libstdc++
+RUN useradd -d /home/container -m container
 
 USER        container
 ENV         USER=container HOME=/home/container
