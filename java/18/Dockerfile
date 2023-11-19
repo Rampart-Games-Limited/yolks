@@ -20,7 +20,7 @@
 # SOFTWARE.
 #
 
-FROM        --platform=$TARGETOS/$TARGETARCH clipse-temurin:18-jdk-alpine
+FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:18-jdk-alpine
 
 LABEL       author="Christophe Roblin" maintainer="christophe@roblin.no"
 
