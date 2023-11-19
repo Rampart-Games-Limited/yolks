@@ -20,11 +20,11 @@
 # SOFTWARE.
 #
 
-FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:18-jdk-alpine
+FROM        --platform=$TARGETOS/$TARGETARCH clipse-temurin:18-jdk-alpine
 
-LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
+LABEL       author="Christophe Roblin" maintainer="christophe@roblin.no"
 
-LABEL       org.opencontainers.image.source="https://github.com/pterodactyl/yolks"
+LABEL       org.opencontainers.image.source="https://github.com/rampart-games-limited/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 RUN 		apt-get update -y \
