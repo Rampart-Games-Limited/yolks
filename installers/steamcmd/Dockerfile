@@ -56,7 +56,7 @@ RUN apk update \
 
 # Set environment variables
 ENV USER=container HOME=/home/container
-
+USER container
 # Set working directory
 WORKDIR $HOME
 
