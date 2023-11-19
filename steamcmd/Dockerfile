@@ -85,7 +85,7 @@ RUN mkdir -p $HOME/.steam \
  && ln -s $HOME/.steam/sdk32/steamclient.so $HOME/.steam/sdk32/steamservice.so \
  && ln -s $HOME/.steam/sdk64/steamclient.so $HOME/.steam/sdk64/steamservice.so
 
-RUN CHOWN -R container:container $HOME
+RUN chown -r container:container $HOME
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
