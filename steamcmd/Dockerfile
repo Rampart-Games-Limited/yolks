@@ -41,9 +41,6 @@ USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-# Update SteamCMD and verify latest version
-RUN steamcmd +quit
-
 COPY ./entrypoint.sh /entrypoint.sh
 # Set default command
 ENTRYPOINT [ "/bin/ash", "/entrypoint.sh" ]
