@@ -27,8 +27,8 @@ LABEL       author="Christophe Roblin" maintainer="christophe@roblin.no"
 LABEL       org.opencontainers.image.source="https://github.com/rampart-games-limited/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-RUN 		apt-get update -y \
- 			&& apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 \
+RUN 		apk update -y \
+ 			&& apk install -y lsof curl ca-certificates openssl git tar sqlite fontconfig freetype-dev tzdata iproute2 libstdc++ \
  			&& useradd -d /home/container -m container
 
 USER        container
