@@ -56,7 +56,6 @@ RUN apk update \
 
 # Set environment variables
 ENV USER=container HOME=/home/container
-USER container
 # Set working directory
 WORKDIR $HOME
 
@@ -65,6 +64,7 @@ RUN apk update \
  && apk add --no-cache bash \
  && rm -rf /var/cache/apk/*
 
+USER container
 # Copy steamcmd files from builder
 COPY --from=builder /root/installer/steamcmd.sh /usr/lib/games/steam/
 COPY --from=builder /root/installer/linux32/steamcmd /usr/lib/games/steam/
