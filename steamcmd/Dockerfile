@@ -51,14 +51,6 @@ RUN tar -xvzf steamcmd.tar.gz && rm steamcmd.tar.gz
 # Set the base image
 FROM alpine:3
 
-RUN apk update \
-	&& adduser -D -h /home/container container
-USER container
-# Set environment variables
-ENV USER=container HOME=/home/container
-
-# Set working directory
-WORKDIR $HOME
 
 # Install prerequisites
 RUN apk update \
@@ -75,6 +67,14 @@ COPY --from=builder /etc/ssl/certs /etc/ssl/certs
 COPY --from=builder /lib/i386-linux-gnu /lib/
 COPY --from=builder /root/installer/linux32/libstdc++.so.6 /lib/
 
+RUN apk update \
+	&& adduser -D -h /home/container container
+USER container
+# Set environment variables
+ENV USER=container HOME=/home/container
+
+# Set working directory
+WORKDIR $HOME
 # Update SteamCMD and verify latest version
 RUN steamcmd +quit
 
