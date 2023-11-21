@@ -19,16 +19,10 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
-###### BUILDER ########
+######## BUILDER ########
 
 # Set the base image
 FROM steamcmd/steamcmd:ubuntu-22 as builder
-
-LABEL author="Christophe Roblin" maintainer="christophe@roblin.no"
-
-LABEL       org.opencontainers.image.source="https://github.com/rampart-games-limited/yolks"
-LABEL       org.opencontainers.image.licenses=MIT
 
 # Set environment variables
 ENV USER root
@@ -51,19 +45,24 @@ RUN tar -xvzf steamcmd.tar.gz && rm steamcmd.tar.gz
 # Set the base image
 FROM alpine:3
 
-RUN apk update \
-	&& adduser -D -h /home/container container
-USER container
-# Set environment variables
-ENV USER=container HOME=/home/container
+LABEL author="Christophe Roblin" maintainer="christophe@roblin.no"
 
-# Set working directory
-WORKDIR $HOME
+LABEL       org.opencontainers.image.source="https://github.com/rampart-games-limited/yolks"
+LABEL       org.opencontainers.image.licenses=MIT
+
 
 # Install prerequisites
 RUN apk update \
- && apk add --no-cache bash \
- && rm -rf /var/cache/apk/*
+ && apk add --no-cache gcompat libstdc++ libgcc\
+ && rm -rf /var/cache/apk/* \
+ && adduser -D -h /home/container container
+# Set environment variables
+#ENV USER container
+ENV HOME /home/container
+#USER container
+# Set working directory
+WORKDIR $HOME
+
 
 # Copy steamcmd files from builder
 COPY --from=builder /root/installer/steamcmd.sh /usr/lib/games/steam/
@@ -84,6 +83,8 @@ RUN mkdir -p $HOME/.steam \
  && ln -s $HOME/.local/share/Steam/steamcmd/linux64 $HOME/.steam/sdk64 \
  && ln -s $HOME/.steam/sdk32/steamclient.so $HOME/.steam/sdk32/steamservice.so \
  && ln -s $HOME/.steam/sdk64/steamclient.so $HOME/.steam/sdk64/steamservice.so
+
+
 
 COPY ./entrypoint.sh /entrypoint.sh
 # Set default command
