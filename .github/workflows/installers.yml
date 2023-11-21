@@ -63,8 +63,9 @@ jobs:
       - uses: docker/build-push-action@v4
         with:
           context: ./installers
-          file: ./installers/${{ matrix.tag}}/Dockerfile
-          platforms: linux/amd64
+          file: Dockerfile
+          platforms: linux/amd64 .
+          working-directory: /installers/${{ matrix.tag}}${{ inputs.name }}
           pushe: true
           tags: |
             ghcr.io/rampart-games-limited/installers:${{ matrix.tag }}
