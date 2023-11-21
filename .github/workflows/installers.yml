@@ -63,7 +63,6 @@ jobs:
       - uses: docker/build-push-action@v4
         with:
           context: ./installers
-          file: Dockerfile
           platforms: linux/amd64
           working-directory: /installers/${{ matrix.tag}}${{ inputs.name }}
           pushe: true
