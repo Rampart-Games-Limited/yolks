@@ -22,7 +22,7 @@
 ######## BUILDER ########
 
 # Set the base image
-FROM ghcr.io/rampart-games-limited/installers:debian-slim
+FROM --platform=$TARGETOS/$TARGETARCH ghcr.io/rampart-games-limited/installers:debian-slim
 
 
 ENV         DEBIAN_FRONTEND=noninteractive
