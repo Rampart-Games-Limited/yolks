@@ -65,6 +65,7 @@ jobs:
           context: ./installers
           platforms: linux/amd64
           working-directory: /installers/${{ matrix.tag}}
+          file: Dockerfile
           pushe: true
           tags: |
             ghcr.io/rampart-games-limited/installers:${{ matrix.tag }}
