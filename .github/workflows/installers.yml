@@ -64,7 +64,7 @@ jobs:
         with:
           context: ./installers
           platforms: linux/amd64
-          working-directory: /installers/${{ matrix.tag}}${{ inputs.name }}
+          working-directory: /installers/${{ matrix.tag}}
           pushe: true
           tags: |
             ghcr.io/rampart-games-limited/installers:${{ matrix.tag }}
