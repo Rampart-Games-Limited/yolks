@@ -32,4 +32,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/rampart-games-limited/yolks:steamcmd_alpine
+            ghcr.io/rampart-games-limited/yolks:steamcmd_debian-slim
