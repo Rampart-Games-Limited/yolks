@@ -64,7 +64,7 @@ jobs:
         with:
           context: ./installers
           file: Dockerfile
-          platforms: linux/amd64 .
+          platforms: linux/amd64
           working-directory: /installers/${{ matrix.tag}}${{ inputs.name }}
           pushe: true
           tags: |
