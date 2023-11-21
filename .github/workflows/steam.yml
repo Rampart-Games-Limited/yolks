@@ -10,7 +10,7 @@ on:
       - steamcmd/**
 jobs:
   push:
-    name: "yolks:steamcmd_alpine"
+    name: "yolks:steamcmd_debian"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
