@@ -32,4 +32,12 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/rampart-games-limited/yolks:steamcmd_debian-slim
+            ghcr.io/rampart-games-limited/yolks:steamcmd_debian-slim'
+      - uses: docker/build-push-action@v4
+        with:
+          context: ./steamcmd
+          file: ./steamcmd/valheim/Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: |
+            ghcr.io/rampart-games-limited/yolks:steamcmd_debian-slim-valheim
