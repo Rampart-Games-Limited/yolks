@@ -28,9 +28,6 @@ echo -e "${BLUE}-------------------------------------------------${NC}"
 # Switch to the container's working directory
 cd /home/container || exit 1
 
-# writing dotnet infos to file
-#dotnetinfo=$(dotnet --info)
-#echo $dotnetinfo >| dotnet_info.txt
 
 echo -e "${BLUE}-------------------------------------------------${NC}"
 echo -e "${GREEN}Starting Server.... Please wait...${NC}"
