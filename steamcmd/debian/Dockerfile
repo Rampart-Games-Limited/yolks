@@ -1,5 +1,6 @@
 #
 # Copyright (c) 2023 Christophe Roblin
+# Copyright (c) 2023 Torsten Widmann
 # Copyright (c) 2020 Jona Koudijs
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,13 +22,10 @@
 # SOFTWARE.
 ######## BUILDER ########
 
-# Set the base image
-FROM --platform=$TARGETOS/$TARGETARCH ghcr.io/rampart-games-limited/installers:debian-slim
-
 FROM        --platform=$BUILDPLATFORM debian:bookworm-slim
 
-LABEL       author="Torsten Widmann" maintainer="info@goover.de"
-LABEL       org.opencontainers.image.source="https://github.com/gOOvER/own-pterodactyl-images"
+LABEL       author="Christophe Roblin" maintainer="christophe@rampart.games"
+LABEL       org.opencontainers.image.source="https://github.com/Rampart-Games-Limited/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 # Update the repository and install needed packages
