@@ -48,9 +48,31 @@ ARG DEBIAN_FRONTEND=noninteractive
 COPY sources.list /etc/apt/sources.list
 RUN dpkg --add-architecture i386 \
  && apt-get update -y \
- && apt-get install -y --no-install-recommends ca-certificates locales steamcmd \
- && rm -rf /var/lib/apt/lists/*
-
+ && apt -y upgrade \
+ && apt-get install -y --no-install-recommends \
+      ca-certificates \
+      locales \
+      steamcmd \
+						build-essential \
+						curl \
+						file \
+						git \
+						git-lfs \
+						jq \
+						locales \
+						python3 \
+      python3-dev \
+      python3-pip \
+						tar \
+						unzip \
+						wget \
+						lib32gcc-s1 \
+						libcurl4 \
+						libcurl4:i386 \
+						libcurl4-gnutls-dev \
+						libcurl4-gnutls-dev:i386 \
+						libsdl2-2.0-0 \
+						libsdl2-2.0-0:i386
 # Add unicode support
 RUN sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen \
  && locale-gen en_US.UTF-8
