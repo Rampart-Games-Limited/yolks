@@ -23,6 +23,7 @@ jobs:
       matrix:
         distro:
           - debian
+          - lif
     
     steps:
       - uses: actions/checkout@v4
