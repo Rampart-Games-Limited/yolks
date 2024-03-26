@@ -120,10 +120,10 @@ RUN         apt install -y --install-recommends \
                     libxtst6 \
                     winbind \
                     xvfb 
-RUN mkdir -pm755 /etc/apt/keyrings
-RUN wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-RUN wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources
-RUN         apt install -y --install-recommends \
+RUN             mkdir -pm755 /etc/apt/keyrings
+RUN             wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+RUN             wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bullseye.sources
+RUN             apt update && apt install -y --install-recommends \
                     winehq-stable \
                     winetricks \
                     cabextract \
