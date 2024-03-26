@@ -181,9 +181,7 @@ ENV             DISPLAY_HEIGHT=768
 ENV             DISPLAY_DEPTH=16
 ENV             AUTO_UPDATE=1
 ENV             XVFB=1
-RUN  Xvfb :0 -screen 0 ${DISPLAY_WIDTH}x${DISPLAY_HEIGHT}x${DISPLAY_DEPTH} &
-RUN winetricks -q vcrun2015 corefonts
-
+ENV             WINETRICKS_RUN="vcrun2015 corefonts"
 # Sets the default stop signal as wings can (currently) only send a kill or generic stop
 STOPSIGNAL SIGINT
 
