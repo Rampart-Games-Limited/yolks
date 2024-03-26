@@ -172,6 +172,7 @@ USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
+ENV             WINEARCH=win32
 ENV             WINEPREFIX=/home/container/.wine
 ENV             WINEDLLOVERRIDES="mscoree,mshtml="
 ENV             DISPLAY=:0
